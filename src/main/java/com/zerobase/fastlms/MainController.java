@@ -20,13 +20,16 @@ import java.io.PrintWriter;
 
 // Controller의 경우 template을 리턴 문자열 리턴시 에러 발생
 @Controller
-public class MainPage {
+public class MainController {
 
     // 스프링 어노테이션을 통해 매핑
     // 요청에 대한 매핑 = RequestMapping("루트")
     @RequestMapping("/")
     public String index() {
-        return "Index Page";
+        // thymeleaf의 경우 templates, .html이 default
+        // classPath를 변경하거나 html을 jsp로 바꾸고 싶은 경우 yml에 prefix와 suffix의 값을 변경해주면 된다.
+
+        return "Index";
     }
 
     // spring -> MVC (View -> 템플릿엔진 화면에 내용을 출력(html))
@@ -62,4 +65,5 @@ public class MainPage {
         printWriter.write(msg);
         printWriter.close();
     }
+
 }
