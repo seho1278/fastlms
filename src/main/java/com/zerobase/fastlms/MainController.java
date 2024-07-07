@@ -7,8 +7,10 @@ package com.zerobase.fastlms;
 클래스는 비효율적 -> x
  */
 
+import com.zerobase.fastlms.component.MailComponent;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -20,12 +22,22 @@ import java.io.PrintWriter;
 
 // Controller의 경우 template을 리턴 문자열 리턴시 에러 발생
 @Controller
+@RequiredArgsConstructor
 public class MainController {
+
+    private final MailComponent mailComponent;
 
     // 스프링 어노테이션을 통해 매핑
     // 요청에 대한 매핑 = RequestMapping("루트")
     @RequestMapping("/")
     public String index() {
+
+        String email = "seho1278@naver.com";
+        String subject = "안녕하세요 제로베이스 입니다.";
+        String text = "<p>안녕하세요.</p><p>반갑습니다.</p>";
+
+        mailComponent.sendMail(email, subject, text);
+
         // thymeleaf의 경우 templates, .html이 default
         // classPath를 변경하거나 html을 jsp로 바꾸고 싶은 경우 yml에 prefix와 suffix의 값을 변경해주면 된다.
 
