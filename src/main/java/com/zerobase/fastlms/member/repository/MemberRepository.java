@@ -6,6 +6,9 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface MemberRepository extends JpaRepository<Member, String> {
-    // null을 허용하기 위해 optional 형태로 데이터를 전달받는다.
-//    Optional<Member> findByUserId(String UserId);
+
+    // 패턴에 맞게 메서드를 작성하면 JPA가 자동으로 implement를 만들어준다
+    // null값을 허용하기 위해 Optional 사용
+    Optional<Member> findByEmailAuthKey(String emailAuthKey);
+
 }
