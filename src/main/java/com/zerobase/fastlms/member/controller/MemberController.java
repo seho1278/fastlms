@@ -9,6 +9,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -41,8 +42,16 @@ public class MemberController {
 
     // 기본적으로 function 하나당 주소 하나
     @GetMapping("/member/email-auth")
-    public String emailAuth() {
-        return "";
+    public String emailAuth(Model model, HttpServletRequest request) {
+
+        String uuid = request.getParameter("id");
+        System.out.println(uuid);
+
+        // 계정 활성화
+        boolean result = memberService.emailAuth(uuid);
+        model.addAttribute("result", result);
+
+        return "member/email_auth";
     }
 
 }

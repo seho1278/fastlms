@@ -32,11 +32,14 @@ public class MainController {
     @RequestMapping("/")
     public String index() {
 
+        /*
         String email = "seho1278@naver.com";
         String subject = "안녕하세요 제로베이스 입니다.";
         String text = "<p>안녕하세요.</p><p>반갑습니다.</p>";
 
         mailComponent.sendMail(email, subject, text);
+
+         */
 
         // thymeleaf의 경우 templates, .html이 default
         // classPath를 변경하거나 html을 jsp로 바꾸고 싶은 경우 yml에 prefix와 suffix의 값을 변경해주면 된다.
