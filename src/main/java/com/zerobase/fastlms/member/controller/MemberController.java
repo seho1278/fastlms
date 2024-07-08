@@ -11,12 +11,20 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
 @RequiredArgsConstructor
 public class MemberController {
 
     private final MemberService memberService;
+
+    // 회원가입
+    @RequestMapping("/member/login")
+    public String login() {
+
+        return "member/login";
+    }
 
     // 회원가입
     @GetMapping("/member/register")
@@ -52,6 +60,11 @@ public class MemberController {
         model.addAttribute("result", result);
 
         return "member/email_auth";
+    }
+
+    @GetMapping("/member/info")
+    public String memberInfo() {
+        return "member/info";
     }
 
 }

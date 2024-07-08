@@ -1,4 +1,4 @@
-package com.zerobase.fastlms;
+package com.zerobase.fastlms.main.controller;
 
 // 주소(논리적 인터넷 주소) 물리적인파일을 매핑
 /*
